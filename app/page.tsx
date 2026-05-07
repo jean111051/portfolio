@@ -158,7 +158,7 @@ export default function HomePage() {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-[15px] leading-7 text-ink-2">
-                  {author.degree} student documenting internship work across frontend interfaces, SEO checks, Node.js practice, and disaster-response platform prototypes.
+                  I am a Bachelor of Science in Information Technology student passionate about web development, UI design, and problem-solving. During my internship at Makerspace InnovHub, I worked on frontend and backend interfaces, SEO checking, Node.js,and mobile dev
                 </p>
 
                 <div className="mt-6 grid gap-3 border-y border-paper-3 py-4 text-[13px] text-ink-2 sm:grid-cols-3">
