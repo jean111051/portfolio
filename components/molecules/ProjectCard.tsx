@@ -47,7 +47,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[40px] items-center justify-center rounded-md bg-forest px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em] text-white transition-all hover:-translate-y-0.5 hover:bg-forest-light focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md bg-forest px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em] text-white transition-all hover:-translate-y-0.5 hover:bg-forest-light focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
                 aria-label={`Open ${link.label} for ${project.title}`}
               >
                 {link.label}

@@ -38,7 +38,7 @@ export function NavBar() {
       >
         <Link
           href="/"
-          className="font-display text-[1.45rem] text-forest transition-colors hover:text-forest-light focus:outline-none focus-visible:underline"
+          className="inline-flex min-h-[44px] items-center font-display text-[1.45rem] text-forest transition-colors hover:text-forest-light focus:outline-none focus-visible:underline"
           aria-label="Jean Richelle Gallego home"
         >
           Jean Richelle G.
@@ -53,7 +53,7 @@ export function NavBar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className={`inline-flex h-9 items-center rounded-md px-3.5 text-[12px] font-body uppercase tracking-[0.08em] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
+                  className={`inline-flex min-h-[44px] min-w-[44px] items-center rounded-md px-3.5 text-[12px] font-body uppercase tracking-[0.08em] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
                     isActive ? "bg-forest text-white" : "text-ink-2 hover:bg-white hover:text-forest"
                   }`}
                   aria-current={isActive ? "page" : undefined}
@@ -106,7 +106,7 @@ export function NavBar() {
               <Link
                 key={href}
                 href={href}
-                className={`py-4 text-[1rem] tracking-[0.06em] uppercase font-body border-b border-paper-3 transition-colors duration-200 focus:outline-none focus-visible:underline ${
+                className={`min-h-[44px] py-4 text-[1rem] tracking-[0.06em] uppercase font-body border-b border-paper-3 transition-colors duration-200 focus:outline-none focus-visible:underline ${
                   isActive ? "text-forest font-medium" : "text-ink-2"
                 }`}
                 aria-current={isActive ? "page" : undefined}

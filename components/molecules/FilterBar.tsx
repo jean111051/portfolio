@@ -25,7 +25,7 @@ export function FilterBar({ options, active, onChange }: FilterBarProps) {
           key={`${option.kind}-${option.value}`}
           onClick={() => onChange(option)}
           aria-pressed={isActive}
-          className={`min-h-[38px] rounded-md px-4 py-2 text-[12px] tracking-[0.05em] font-body transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 ${
+          className={`min-h-[44px] min-w-[44px] rounded-md px-4 py-2 text-[12px] tracking-[0.05em] font-body transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 ${
             isActive
               ? "bg-forest text-white shadow-sm"
               : "text-ink-2 hover:bg-paper hover:text-forest"

@@ -33,7 +33,7 @@ export interface LogFrontmatter {
 }
 
 export interface Log extends LogFrontmatter {
-  content: string;
+  content: MarkdownBlock[];
 }
 
 export interface Author {
@@ -46,3 +46,23 @@ export interface Author {
   email: string;
   avatar: string;
 }
+
+export type MarkdownBlock =
+  | {
+      type: "heading";
+      level: 2 | 3;
+      text: string;
+    }
+  | {
+      type: "paragraph";
+      text: string;
+    }
+  | {
+      type: "list";
+      items: string[];
+    }
+  | {
+      type: "image";
+      src: string;
+      alt: string;
+    };

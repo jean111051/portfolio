@@ -179,13 +179,13 @@ export default function HomePage() {
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     href="/work"
-                    className="inline-flex min-h-[42px] items-center justify-center rounded-md bg-forest px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest-light"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md bg-forest px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest-light"
                   >
                     View Work
                   </Link>
                   <Link
                     href="/logs"
-                    className="inline-flex min-h-[42px] items-center justify-center rounded-md border border-forest/25 bg-paper px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-forest transition-all hover:-translate-y-0.5 hover:border-forest hover:bg-white"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-forest/25 bg-paper px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-forest transition-all hover:-translate-y-0.5 hover:border-forest hover:bg-white"
                   >
                     Read Logs
                   </Link>
@@ -243,7 +243,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/logs"
-                className="inline-flex min-h-[38px] w-fit items-center rounded-md border border-white/20 px-4 text-[11px] uppercase tracking-[0.1em] text-white/88 transition-colors hover:border-gold-light hover:bg-white/10"
+                className="inline-flex min-h-[44px] min-w-[44px] w-fit items-center rounded-md border border-white/20 px-4 text-[11px] uppercase tracking-[0.1em] text-white/88 transition-colors hover:border-gold-light hover:bg-white/10"
               >
                 Open Logs
               </Link>

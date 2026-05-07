@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LogContent } from "@/components/molecules/LogContent";
 import { getAllLogSlugs, getLogBySlug } from "@/lib/logs";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -44,7 +45,7 @@ export default async function LogDetailPage({ params }: Props) {
     <article className="max-w-2xl mx-auto px-6 py-16">
       <Link
         href="/logs"
-        className="inline-flex items-center gap-2 text-[13px] text-forest-light hover:text-forest transition-colors mb-10 focus:outline-none focus-visible:underline"
+        className="mb-10 inline-flex min-h-[44px] items-center gap-2 text-[13px] text-forest-light transition-colors hover:text-forest focus:outline-none focus-visible:underline"
       >
         &larr; Back to Logs
       </Link>
@@ -61,15 +62,12 @@ export default async function LogDetailPage({ params }: Props) {
         </time>
       </header>
 
-      <div
-        className="prose-log"
-        dangerouslySetInnerHTML={{ __html: log.content }}
-      />
+      <LogContent blocks={log.content} />
 
       <div className="mt-14 pt-6 border-t border-paper-3">
         <Link
           href="/logs"
-          className="inline-flex items-center gap-2 text-[13px] text-forest-light hover:text-forest transition-colors focus:outline-none focus-visible:underline"
+          className="inline-flex min-h-[44px] items-center gap-2 text-[13px] text-forest-light transition-colors hover:text-forest focus:outline-none focus-visible:underline"
         >
           &larr; All Logs
         </Link>
