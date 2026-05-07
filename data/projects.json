@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "SILAG Startup Marketing Page",
+    "description": "Created and improved a TypeScript marketing page for the SILAG Startup project, then configured Git version control and pushed the work from VS Code to GitHub.",
+    "techStack": ["Next.js", "TypeScript", "Git", "GitHub"],
+    "completionDate": "February 2026",
+    "category": "Frontend",
+    "repositoryUrl": "https://github.com/jean111051/sillag-website.git"
+  },
+  {
+    "id": 2,
+    "title": "Client Page Creation and Content Migration",
+    "description": "Built client-facing pages, migrated content into HTML templates, formatted vehicle comparison pages, and revised page templates for multiple client assignments.",
+    "techStack": ["HTML5", "CSS3", "Content Migration", "Templates"],
+    "completionDate": "February-March 2026",
+    "category": "Frontend"
+  },
+  {
+    "id": 3,
+    "title": "Assigned Website SEO and QA Review",
+    "description": "Checked media queries, SEO meta tags, map links, internal links, H1 structure, page descriptions, and mobile content behavior across assigned websites.",
+    "techStack": ["SEO", "Responsive Design", "QA", "Metadata"],
+    "completionDate": "February 2026",
+    "category": "SEO Audit"
+  },
+  {
+    "id": 5,
+    "title": "Disaster Response and Emergency Verification Web and Mobile App",
+    "description": "Researched, prototyped, hosted, and iteratively improved a web application for Disaster Response and Emergency Verification, including admin dashboards, reporter and dispatcher pages, and bug fixes. Created a mobile version of the Disaster Response and Emergency Verification platform, configured API access for physical phones, and improved mobile reporter workflows.",
+    "techStack": ["React", "Node.js", "Vercel", "UI Design", "Flutter", "MongoDB", "Supabase"],
+    "completionDate": "March-April 2026",
+    "category": "Frontend",
+    "repositoryLinks": [
+      {
+        "label": "Web Repo",
+        "url": "https://github.com/jean111051/https---github.com-BrownyKat-SVS.git"
+      },
+      {
+        "label": "Mobile Repo",
+        "url": "https://github.com/EstradaC01/svs_mobile.git"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Deskdine",
+    "description": "Researched, developed, and improved a web-based café management system, including dedicated webpages for admin, staff, and café staff with role-based authentication and Supabase integration. Implemented daily menu deadline handling, automatic expiry synchronization for expired menus, and enhanced menu management workflows across the platform.",
+    "techStack": ["Tailwind", "Node.js", "ejs", "Supabase"],
+    "completionDate": "April 2026",
+    "category": "Frontend",
+    "repositoryUrl": "https://github.com/jean111051/deskdine.git"
+  },
+  {
+    "id": 7,
+    "title": "Internship Portfolio and Activity Log",
+    "description": "Consolidated Makerspace Innovhub internship activities into a local data-driven Next.js portfolio with filterable projects, Markdown logs, static generation, and SEO metadata.",
+    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "Markdown"],
+    "completionDate": "April 2026",
+    "category": "Frontend"
+  }
+]

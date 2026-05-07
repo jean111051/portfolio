@@ -1,0 +1,37 @@
+{
+  "name": "jean-richelle-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "audit:prod": "npm audit --omit=dev",
+    "lighthouse": "lighthouse http://127.0.0.1:3000 --preset=desktop --only-categories=performance,accessibility,best-practices,seo --chrome-flags=\"--headless=new\"",
+    "verify": "npm run lint && npm run build && npm run audit:prod"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "next": "^16.2.5",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.5",
+    "lighthouse": "^13.2.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "$postcss"
+  }
+}
