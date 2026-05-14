@@ -77,27 +77,27 @@ const toolBadges = [
   {
     icon: "flutter",
     name: "Flutter",
-    className: "left-[5%] top-[18%] border-[#45a5f5] text-[#45a5f5]",
+    className: "left-[5%] top-[18%] border-[#294d78] text-[#294d78]",
   },
   {
     icon: "mongodb",
     name: "MongoDB",
-    className: "right-[3%] top-[14%] border-[#4faa41] text-[#4faa41]",
+    className: "right-[3%] top-[14%] border-[#142946] text-[#142946]",
   },
   {
     label: "Ai",
     name: "Illustrator",
-    className: "right-[1%] bottom-[34%] border-[#f5a65b] text-[#d95f45]",
+    className: "right-[1%] bottom-[34%] border-[#f5822a] text-[#e85d1c]",
   },
   {
     label: "Xd",
     name: "Adobe XD",
-    className: "left-[4%] bottom-[35%] border-[#d95f45] text-[#d95f45]",
+    className: "left-[4%] bottom-[35%] border-[#e85d1c] text-[#e85d1c]",
   },
   {
     label: "JS",
     name: "JavaScript",
-    className: "left-[18%] top-[48%] border-[#f5a65b] text-[#123f43]",
+    className: "left-[18%] top-[48%] border-[#f5822a] text-[#142946]",
   },
 ];
 
@@ -117,10 +117,10 @@ function ToolBadgeIcon({ icon }: { icon?: string }) {
     return (
       <svg viewBox="0 0 32 32" className="h-5 w-5" aria-hidden="true">
         <path
-          fill="#4faa41"
+          fill="#142946"
           d="M16 2.7c2.8 3.4 6.2 8 6.2 13.1 0 5.4-2.8 9.7-6.2 13.5-3.4-3.8-6.2-8.1-6.2-13.5 0-5.1 3.4-9.7 6.2-13.1z"
         />
-        <path fill="#2d6b2d" d="M16 2.7v26.6c3.4-3.8 6.2-8.1 6.2-13.5 0-5.1-3.4-9.7-6.2-13.1z" opacity="0.55" />
+        <path fill="#e85d1c" d="M16 2.7v26.6c3.4-3.8 6.2-8.1 6.2-13.5 0-5.1-3.4-9.7-6.2-13.1z" opacity="0.55" />
         <path stroke="#ffffff" strokeLinecap="round" strokeWidth="1.35" d="M16 8.5v16.8" />
       </svg>
     );
@@ -140,7 +140,7 @@ export default function HomePage() {
     <>
       <section className="relative overflow-hidden px-5 py-8 sm:px-6 lg:py-10" aria-label="Hero">
         <div className="mx-auto max-w-6xl">
-          <div className="relative overflow-hidden rounded-lg border border-paper-3 bg-white/76 p-6 shadow-[0_18px_55px_rgba(18,63,67,0.08)] backdrop-blur sm:p-7 lg:p-8">
+          <div className="relative overflow-hidden rounded-lg border border-paper-3 bg-white/76 p-6 shadow-[0_18px_55px_rgba(20,41,70,0.08)] backdrop-blur sm:p-7 lg:p-8">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(400px,0.8fr)] lg:items-center">
               <div>
                 <div className="mb-5 flex flex-wrap items-center gap-2">
@@ -155,7 +155,7 @@ export default function HomePage() {
                 <h1 className="max-w-[620px] font-display text-[3.1rem] leading-[0.97] text-ink sm:text-[3.8rem] lg:text-[4.35rem]">
                   Jean Richelle
                   <span className="block text-gold">Gallego</span>
-                </h1>
+                </h1>   
 
                 <p className="mt-5 max-w-2xl text-[15px] leading-7 text-ink-2">
                   {author.degree} student documenting internship work across frontend interfaces, SEO checks, Node.js practice, and disaster-response platform prototypes.
@@ -193,7 +193,7 @@ export default function HomePage() {
               </div>
 
               <div className="relative min-h-[430px]">
-                <div className="absolute inset-2 rounded-[2rem] bg-[radial-gradient(circle_at_72%_35%,rgba(139,209,222,0.42),transparent_25%),radial-gradient(circle_at_28%_78%,rgba(245,166,91,0.22),transparent_28%),radial-gradient(circle_at_58%_68%,rgba(18,63,67,0.13),transparent_30%)]" aria-hidden="true" />
+                <div className="absolute inset-2 rounded-[2rem] bg-[radial-gradient(circle_at_72%_35%,rgba(41,77,120,0.28),transparent_25%),radial-gradient(circle_at_28%_78%,rgba(245,130,42,0.22),transparent_28%),radial-gradient(circle_at_58%_68%,rgba(20,41,70,0.13),transparent_30%)]" aria-hidden="true" />
                 <div className="absolute bottom-16 right-[10%] h-48 w-56 rounded-tl-full bg-[#cfeef5]/48 blur-sm" aria-hidden="true" />
                 <div className="absolute bottom-16 right-[20%] h-8 w-48 rounded-full bg-forest/16 blur-xl" aria-hidden="true" />
                 <div className="relative mx-auto h-[430px] max-w-[540px]">
@@ -215,11 +215,11 @@ export default function HomePage() {
                       fill
                       priority
                       sizes="(min-width: 1024px) 420px, 92vw"
-                      className="object-contain object-bottom saturate-105 drop-shadow-[0_18px_24px_rgba(18,63,67,0.18)]"
+                      className="object-contain object-bottom saturate-105 drop-shadow-[0_18px_24px_rgba(20,41,70,0.18)]"
                     />
                   </div>
 
-                  <div className="absolute bottom-0 left-[8%] right-[8%] z-40 grid grid-cols-3 gap-2 rounded-lg border border-white/80 bg-white/96 p-3 shadow-[0_14px_38px_rgba(18,63,67,0.16)] backdrop-blur">
+                  <div className="absolute bottom-0 left-[8%] right-[8%] z-40 grid grid-cols-3 gap-2 rounded-lg border border-white/80 bg-white/96 p-3 shadow-[0_14px_38px_rgba(20,41,70,0.16)] backdrop-blur">
                     {[
                       { num: projects.length, label: "Projects" },
                       { num: logs.length, label: "Logs" },
@@ -236,7 +236,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="mt-10 rounded-lg bg-forest p-5 text-white shadow-[0_18px_60px_rgba(18,63,67,0.14)] sm:p-6">
+          <aside className="mt-10 rounded-lg bg-forest p-5 text-white shadow-[0_18px_60px_rgba(20,41,70,0.14)] sm:p-6">
             <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-[11px] uppercase tracking-[0.18em] text-white/62">
                 Internship Snapshot
@@ -325,7 +325,7 @@ export default function HomePage() {
               return (
                 <li key={`${item.period}-${item.title}`} className="relative md:grid md:grid-cols-[1fr_4.5rem_1fr] md:items-start md:gap-4">
                   <div className={`${alignRight ? "md:col-start-1 md:text-right" : "md:col-start-3"} pl-12 md:pl-0`}>
-                    <article className="group border border-paper-3 bg-white/86 p-5 shadow-[0_14px_34px_rgba(18,63,67,0.07)] transition-all hover:-translate-y-0.5 hover:border-forest/25 hover:bg-white">
+                    <article className="group border border-paper-3 bg-white/86 p-5 shadow-[0_14px_34px_rgba(20,41,70,0.07)] transition-all hover:-translate-y-0.5 hover:border-forest/25 hover:bg-white">
                       <div className={`mb-4 flex items-center gap-3 ${alignRight ? "md:justify-end" : ""}`}>
                         <span className="rounded-full border border-forest/15 bg-paper px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-forest">
                           {item.period}

@@ -19,7 +19,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       : []);
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-paper-3 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-forest/20 hover:shadow-[0_24px_80px_rgba(26,58,42,0.12)]">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-paper-3 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-forest/20 hover:shadow-[0_24px_80px_rgba(20,41,70,0.12)]">
       <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-forest via-forest-light to-gold transition-transform duration-200 group-hover:scale-x-100" />
       <div className="mb-5 flex items-start justify-between gap-4">
         <p className="text-[10px] tracking-[0.12em] uppercase text-forest-light font-body">
@@ -40,19 +40,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
         {repositoryLinks.length > 0 ? (
-          <div className="flex flex-wrap gap-2">
-            {repositoryLinks.map((link) => (
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {repositoryLinks.map((link, index) => {
+              const shouldSpanFullRow =
+                repositoryLinks.length % 2 === 1 && index === repositoryLinks.length - 1;
+
+              return (
               <a
                 key={`${project.id}-${link.label}`}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md bg-forest px-4 py-2 text-[12px] font-medium uppercase tracking-[0.08em] text-white transition-all hover:-translate-y-0.5 hover:bg-forest-light focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2"
+                className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md bg-forest px-4 py-2 text-center text-[12px] font-medium uppercase tracking-[0.08em] text-white transition-all hover:-translate-y-0.5 hover:bg-forest-light focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 ${
+                  shouldSpanFullRow ? "sm:col-span-2" : ""
+                }`}
                 aria-label={`Open ${link.label} for ${project.title}`}
               >
                 {link.label}
               </a>
-            ))}
+              );
+            })}
           </div>
         ) : null}
       </div>

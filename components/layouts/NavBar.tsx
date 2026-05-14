@@ -31,7 +31,7 @@ export function NavBar() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-paper-3 bg-[#fbf7ef]/90 shadow-sm backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-paper-3 bg-[#f7f9fc]/90 shadow-sm backdrop-blur-xl">
       <nav
         className="mx-auto flex h-[60px] max-w-6xl items-center justify-between px-5 sm:px-6"
         aria-label="Main navigation"
@@ -93,7 +93,7 @@ export function NavBar() {
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="fixed inset-0 top-[60px] z-40 flex flex-col gap-1 bg-[#fbf7ef]/98 px-6 pt-8 shadow-2xl backdrop-blur-xl md:hidden"
+          className="fixed inset-0 top-[60px] z-40 flex flex-col gap-1 bg-[#f7f9fc]/98 px-6 pt-8 shadow-2xl backdrop-blur-xl md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"

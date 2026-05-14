@@ -8,12 +8,6 @@ export function Footer() {
           <p className="font-display text-xl text-white">&copy; {new Date().getFullYear()} Jean Richelle G. Gallego</p>
           <p className="mt-1 text-white/60">Makerspace Innovhub internship portfolio</p>
         </div>
-        <a
-          href="mailto:gjeanrichelle@gmail.com"
-          className="inline-flex min-h-[44px] w-fit items-center rounded-md border border-white/15 px-4 py-2 text-[12px] uppercase tracking-[0.12em] text-white/80 transition-colors hover:border-gold-light hover:text-white"
-        >
-          Contact
-        </a>
       </div>
     </footer>
   );

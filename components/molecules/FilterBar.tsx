@@ -22,6 +22,7 @@ export function FilterBar({ options, active, onChange }: FilterBarProps) {
 
         return (
         <button
+          type="button"
           key={`${option.kind}-${option.value}`}
           onClick={() => onChange(option)}
           aria-pressed={isActive}

@@ -24,7 +24,7 @@ function useProjectFilter(
   projects: Project[],
   initial: ProjectFilterOption = allProjectsFilter,
 ) {
-  const [active, setActive] = useState(initial);
+  const [active, setActive] = useState<ProjectFilterOption>(initial);
   const filtered = sortProjectsByRepository(filterProjects(projects, active));
 
   return { active, setActive, filtered };
