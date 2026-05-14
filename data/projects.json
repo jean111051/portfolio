@@ -78,6 +78,10 @@
       {
         "label": "Visit Website",
         "url": "https://portfolio-nu-sable-58.vercel.app/"
+      },
+      {
+        "label": "GitHub Repo",
+        "url": "https://github.com/jean111051/portfolio.git"
       }
     ]
   }
