@@ -135,7 +135,13 @@ export default function HomePage() {
   const featured = getFeaturedProjects(3);
   const projects = getAllProjects();
   const logs = getAllLogs();
-  const techCount = new Set(projects.flatMap((project) => project.techStack)).size;
+  const techStackSet = new Set<string>();
+  for (const project of projects) {
+    for (const tech of project.techStack) {
+      techStackSet.add(tech);
+    }
+  }
+  const techCount = techStackSet.size;
 
   return (
     <>
@@ -204,8 +210,7 @@ export default function HomePage() {
                     <div
                       key={tool.name}
                       className={`absolute z-20 flex h-9 w-9 items-center justify-center rounded-md border bg-white/76 text-[12px] font-semibold shadow-[0_8px_18px_rgba(47,143,216,0.11)] backdrop-blur ${tool.className}`}
-                      aria-label={tool.name}
-                      title={tool.name}
+                      aria-hidden="true"
                     >
                       {"icon" in tool ? <ToolBadgeIcon icon={tool.icon} /> : tool.label}
                     </div>
@@ -253,12 +258,12 @@ export default function HomePage() {
 
           <aside className="mt-10 rounded-lg bg-forest p-5 text-white shadow-[0_18px_60px_rgba(20,41,70,0.14)] sm:p-6">
             <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-white/62">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-white/80">
                 Internship Snapshot
               </p>
               <Link
                 href="/logs"
-                className="inline-flex min-h-[44px] min-w-[44px] w-fit items-center rounded-md border border-white/20 px-4 text-[11px] uppercase tracking-[0.1em] text-white/88 transition-colors hover:border-gold-light hover:bg-white/10"
+                className="inline-flex min-h-[44px] min-w-[44px] w-fit items-center rounded-md border border-white/20 px-4 text-[11px] uppercase tracking-[0.1em] text-white/95 transition-colors hover:border-gold-light hover:bg-white/10"
               >
                 Open Logs
               </Link>

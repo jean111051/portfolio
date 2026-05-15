@@ -16,8 +16,15 @@ export function getAllCategories(): string[] {
 }
 
 export function getAllTechStacks(): string[] {
-  const tech = getAllProjects().flatMap((project) => project.techStack);
-  return Array.from(new Set(tech)).sort((a, b) => a.localeCompare(b));
+  const tech = new Set<string>();
+
+  for (const project of getAllProjects()) {
+    for (const item of project.techStack) {
+      tech.add(item);
+    }
+  }
+
+  return Array.from(tech).sort((a, b) => a.localeCompare(b));
 }
 
 export function getProjectFilterOptions(): ProjectFilterOption[] {
