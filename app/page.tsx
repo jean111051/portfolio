@@ -226,7 +226,7 @@ export default function HomePage() {
                     {[
                       { num: projects.length, label: "Projects" },
                       { num: logs.length, label: "Logs" },
-                      { num: techCount, label: "Focus Areas" },
+                      { num: techCount, label: "Frontend Development" },
                     ].map(({ num, label }) => (
                       <div key={label} className="text-center">
                         <p className="font-display text-3xl leading-none text-forest">{num}</p>
@@ -259,7 +259,7 @@ export default function HomePage() {
       <section className="px-5 pb-10 sm:px-6" aria-label="Portfolio focus areas">
         <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-3">
           {[
-            ["Frontend", "Responsive pages, UI polish, accessible layouts"],
+            ["Web Development", "Responsive pages, UI polish, accessible layouts"],
             ["Operations", "SEO checks, reporting, deployment handoff"],
             ["Systems", "Node.js practice, Supabase, MongoDB workflows"],
           ].map(([title, text]) => (
