@@ -226,11 +226,24 @@ export default function HomePage() {
                     {[
                       { num: projects.length, label: "Projects" },
                       { num: logs.length, label: "Logs" },
-                      { num: techCount, label: "Web Development" },
+                      { label: "Web Development", sublabel: "Focus Area" },
                     ].map(({ num, label }) => (
                       <div key={label} className="text-center">
-                        <p className="font-display text-3xl leading-none text-forest">{num}</p>
-                        <p className="mt-1 text-[10px] uppercase tracking-[0.1em] text-ink-3">{label}</p>
+                        {typeof num === "number" ? (
+                          <>
+                            <p className="font-display text-3xl leading-none text-forest">{num}</p>
+                            <p className="mt-1 text-[10px] uppercase tracking-[0.1em] text-ink-3">{label}</p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="mt-1 text-[12px] font-medium uppercase tracking-[0.14em] text-ink-3">
+                              {label}
+                            </p>
+                            <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-3">
+                              {sublabel}
+                            </p>
+                          </>
+                        )}
                       </div>
                     ))}
                   </div>
