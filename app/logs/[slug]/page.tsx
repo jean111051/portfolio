@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LogContent } from "@/components/molecules/LogContent";
 import { getAllLogSlugs, getLogBySlug } from "@/lib/logs";
+import { JsonLd, absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,18 +18,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   try {
     const log = await getLogBySlug(slug);
-    return {
+    return buildPageMetadata({
       title: log.title,
       description: log.excerpt,
-      openGraph: {
-        title: log.title,
-        description: log.excerpt,
-        type: "article",
-        authors: ["Jean Richelle G. Gallego"],
+      path: `/logs/${log.slug}`,
+      type: "article",
+    });
+  } catch {
+    return {
+      title: "Log Not Found",
+      robots: {
+        index: false,
+        follow: false,
       },
     };
-  } catch {
-    return { title: "Log Not Found" };
   }
 }
 
@@ -43,6 +46,24 @@ export default async function LogDetailPage({ params }: Props) {
 
   return (
     <article className="max-w-2xl mx-auto px-6 py-16">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: log.title,
+          description: log.excerpt,
+          url: absoluteUrl(`/logs/${log.slug}`),
+          author: {
+            "@type": "Person",
+            name: "Jean Richelle G. Gallego",
+          },
+          isPartOf: {
+            "@type": "Blog",
+            name: "Internship Logs",
+            url: absoluteUrl("/logs"),
+          },
+        }}
+      />
       <Link
         href="/logs"
         className="mb-10 inline-flex min-h-[44px] items-center gap-2 text-[13px] text-forest-light transition-colors hover:text-forest focus:outline-none focus-visible:underline"

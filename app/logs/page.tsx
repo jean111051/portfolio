@@ -2,18 +2,34 @@ import type { Metadata } from "next";
 import { getAllLogs } from "@/lib/logs";
 import { LogCard } from "@/components/molecules/LogCard";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
+import { JsonLd, absoluteUrl, buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Logs",
   description:
-    "Weekly Makerspace Innovhub internship logs documenting orientation, frontend work, SEO checks, Node.js practice, and disaster-response platform development.",
-};
+    "Weekly Makerspace Innovhub internship logs documenting orientation, frontend work, SEO checks, Node.js practice, mobile development, and disaster-response platform development.",
+  path: "/logs",
+});
 
 export default function LogsPage() {
   const logs = getAllLogs();
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Internship Logs",
+          url: absoluteUrl("/logs"),
+          blogPost: logs.map((log) => ({
+            "@type": "BlogPosting",
+            headline: log.title,
+            description: log.excerpt,
+            url: absoluteUrl(`/logs/${log.slug}`),
+          })),
+        }}
+      />
       <SectionEyebrow>Narrative Log</SectionEyebrow>
       <h1 className="font-display text-[2.2rem] text-ink leading-snug mb-2">
         Internship <em className="not-italic text-gold">Logs</em>

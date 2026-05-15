@@ -7,6 +7,7 @@ import { Timeline } from "@/components/molecules/Timeline";
 import { getAuthor } from "@/lib/author";
 import { getAllProjects, getFeaturedProjects } from "@/lib/projects";
 import { getAllLogs } from "@/lib/logs";
+import { JsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
 
 const timelineItems = [
   { period: "Feb 9-20", label: "Orientation, SILAG page, SEO checks" },
@@ -138,6 +139,8 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={personJsonLd()} />
+      <JsonLd data={websiteJsonLd()} />
       <section className="relative overflow-hidden px-5 py-8 sm:px-6 lg:py-10" aria-label="Hero">
         <div className="mx-auto max-w-6xl">
           <div className="relative overflow-hidden rounded-lg border border-paper-3 bg-white/76 p-6 shadow-[0_18px_55px_rgba(20,41,70,0.08)] backdrop-blur sm:p-7 lg:p-8">
