@@ -226,7 +226,7 @@ export default function HomePage() {
                     {[
                       { num: projects.length, label: "Projects" },
                       { num: logs.length, label: "Logs" },
-                      { num: techCount, label: "Frontend Development" },
+                      { num: techCount, label: "Web Development" },
                     ].map(({ num, label }) => (
                       <div key={label} className="text-center">
                         <p className="font-display text-3xl leading-none text-forest">{num}</p>
