@@ -1,8 +1,5 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -11,25 +8,6 @@ const navLinks = [
 ];
 
 export function NavBar() {
-  const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
-    };
-
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
   return (
     <header className="sticky top-0 z-[1000] border-b border-paper-3 bg-[#f7f9fc]/95 shadow-sm backdrop-blur-xl">
       <nav
@@ -45,79 +23,47 @@ export function NavBar() {
         </Link>
 
         <ul className="hidden list-none gap-2 md:flex">
-          {navLinks.map(({ href, label }) => {
-            const isActive =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-            return (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className={`inline-flex min-h-[44px] min-w-[44px] items-center rounded-md px-3.5 text-[12px] font-body uppercase tracking-[0.08em] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
-                    isActive ? "bg-forest text-white" : "text-ink-2 hover:bg-white hover:text-forest"
-                  }`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <button
-          className="relative z-[1001] flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-full border border-paper-3 bg-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest md:hidden"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span
-            className={`block w-5 h-px bg-ink transition-all duration-200 ${
-              menuOpen ? "rotate-45 translate-y-[6px]" : ""
-            }`}
-          />
-          <span
-            className={`block w-5 h-px bg-ink transition-all duration-200 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-5 h-px bg-ink transition-all duration-200 ${
-              menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
-            }`}
-          />
-        </button>
-      </nav>
-
-      {menuOpen && (
-        <div
-          id="mobile-menu"
-          className="fixed left-0 right-0 top-[60px] z-[999] h-[calc(100dvh-60px)] overflow-y-auto bg-paper px-5 py-6 shadow-2xl md:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile navigation"
-        >
-          {navLinks.map(({ href, label }) => {
-            const isActive =
-              href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-            return (
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
               <Link
-                key={href}
                 href={href}
-                className={`mx-auto flex min-h-[52px] w-full max-w-6xl items-center rounded-md border border-paper-3 px-4 text-[0.95rem] font-body uppercase tracking-[0.06em] shadow-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest ${
-                  isActive ? "bg-forest text-white" : "bg-white text-ink-2 hover:text-forest"
-                }`}
-                aria-current={isActive ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
+                className="inline-flex min-h-[44px] min-w-[44px] items-center rounded-md px-3.5 font-body text-[12px] uppercase tracking-[0.08em] text-ink-2 transition-colors duration-200 hover:bg-white hover:text-forest focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
               >
                 {label}
               </Link>
-            );
-          })}
-        </div>
-      )}
+            </li>
+          ))}
+        </ul>
+
+        <details className="group md:hidden">
+          <summary
+            className="relative z-[1001] flex h-11 w-11 cursor-pointer list-none flex-col items-center justify-center gap-[5px] rounded-full border border-paper-3 bg-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-forest [&::-webkit-details-marker]:hidden"
+            aria-label="Toggle menu"
+          >
+            <span className="block h-px w-5 bg-ink transition-transform duration-200 group-open:translate-y-[6px] group-open:rotate-45" />
+            <span className="block h-px w-5 bg-ink transition-opacity duration-200 group-open:opacity-0" />
+            <span className="block h-px w-5 bg-ink transition-transform duration-200 group-open:-translate-y-[6px] group-open:-rotate-45" />
+          </summary>
+
+          <div
+            id="mobile-menu"
+            className="fixed left-0 right-0 top-[60px] z-[999] h-[calc(100dvh-60px)] overflow-y-auto bg-paper px-5 py-6 shadow-2xl"
+            aria-label="Mobile navigation"
+          >
+            <div className="mx-auto grid max-w-6xl gap-2">
+              {navLinks.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="flex min-h-[52px] w-full items-center rounded-md border border-paper-3 bg-white px-4 font-body text-[0.95rem] uppercase tracking-[0.06em] text-ink-2 shadow-sm transition-colors duration-200 hover:text-forest focus:outline-none focus-visible:ring-2 focus-visible:ring-forest"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </details>
+      </nav>
     </header>
   );
 }

@@ -143,7 +143,7 @@ export default function HomePage() {
       <JsonLd data={websiteJsonLd()} />
       <section className="relative overflow-hidden px-5 py-8 sm:px-6 lg:py-10" aria-label="Hero">
         <div className="mx-auto max-w-6xl">
-          <div className="relative overflow-hidden rounded-lg border border-paper-3 bg-white/76 p-6 shadow-[0_18px_55px_rgba(20,41,70,0.08)] backdrop-blur sm:p-7 lg:p-8">
+          <div className="relative overflow-hidden rounded-lg border border-paper-3 bg-white/88 p-6 shadow-[0_18px_55px_rgba(20,41,70,0.08)] sm:bg-white/76 sm:p-7 sm:backdrop-blur lg:p-8">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(400px,0.8fr)] lg:items-center">
               <div>
                 <div className="mb-5 flex flex-wrap items-center gap-2">
@@ -196,9 +196,9 @@ export default function HomePage() {
               </div>
 
               <div className="relative min-h-[430px]">
-                <div className="absolute inset-2 rounded-[2rem] bg-[radial-gradient(circle_at_72%_35%,rgba(41,77,120,0.28),transparent_25%),radial-gradient(circle_at_28%_78%,rgba(245,130,42,0.22),transparent_28%),radial-gradient(circle_at_58%_68%,rgba(20,41,70,0.13),transparent_30%)]" aria-hidden="true" />
-                <div className="absolute bottom-16 right-[10%] h-48 w-56 rounded-tl-full bg-[#cfeef5]/48 blur-sm" aria-hidden="true" />
-                <div className="absolute bottom-16 right-[20%] h-8 w-48 rounded-full bg-forest/16 blur-xl" aria-hidden="true" />
+                <div className="absolute inset-2 rounded-[2rem] bg-white/30 sm:bg-[radial-gradient(circle_at_72%_35%,rgba(41,77,120,0.28),transparent_25%),radial-gradient(circle_at_28%_78%,rgba(245,130,42,0.22),transparent_28%),radial-gradient(circle_at_58%_68%,rgba(20,41,70,0.13),transparent_30%)]" aria-hidden="true" />
+                <div className="absolute bottom-16 right-[10%] hidden h-48 w-56 rounded-tl-full bg-[#cfeef5]/48 blur-sm sm:block" aria-hidden="true" />
+                <div className="absolute bottom-16 right-[20%] hidden h-8 w-48 rounded-full bg-forest/16 blur-xl sm:block" aria-hidden="true" />
                 <div className="relative mx-auto h-[430px] max-w-[540px]">
                   {toolBadges.map((tool) => (
                     <div
@@ -216,7 +216,6 @@ export default function HomePage() {
                       src={author.avatar}
                       alt="Professional portrait of Jean Richelle G. Gallego"
                       fill
-                      priority
                       sizes="(min-width: 1024px) 420px, 92vw"
                       className="object-contain object-bottom saturate-105 drop-shadow-[0_18px_24px_rgba(20,41,70,0.18)]"
                     />
@@ -227,7 +226,7 @@ export default function HomePage() {
                       { num: projects.length, label: "Projects" },
                       { num: logs.length, label: "Logs" },
                       { label: "Web Development", sublabel: "Focus Area" },
-                    ].map(({ num, label }) => (
+                    ].map(({ num, label, sublabel }) => (
                       <div key={label} className="text-center">
                         {typeof num === "number" ? (
                           <>
@@ -269,7 +268,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 pb-10 sm:px-6" aria-label="Portfolio focus areas">
+      <section className="px-5 pb-10 [content-visibility:auto] [contain-intrinsic-size:1px_280px] sm:px-6" aria-label="Portfolio focus areas">
         <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-3">
           {[
             ["Web Development", "Responsive pages, UI polish, accessible layouts"],
@@ -288,7 +287,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-paper-3 bg-white/70 py-12 lg:py-14" aria-label="Featured projects">
+      <section className="border-y border-paper-3 bg-white/70 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_760px] lg:py-14" aria-label="Featured projects">
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
             <div>
@@ -312,7 +311,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-paper-3 bg-paper/60 px-5 py-12 sm:px-6 lg:py-16" aria-label="Narrative timeline">
+      <section className="border-b border-paper-3 bg-paper/60 px-5 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_1600px] sm:px-6 lg:py-16" aria-label="Narrative timeline">
         <div className="mx-auto grid max-w-6xl gap-9 lg:grid-cols-[0.42fr_1fr] lg:items-start">
           <div className="lg:sticky lg:top-24">
             <SectionEyebrow>Narrative</SectionEyebrow>
@@ -367,7 +366,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 py-12 sm:px-6 lg:py-14" aria-label="Portfolio summary">
+      <section className="px-5 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_520px] sm:px-6 lg:py-14" aria-label="Portfolio summary">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionEyebrow>Summary</SectionEyebrow>
