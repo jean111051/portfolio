@@ -67,13 +67,7 @@ export default function HomePage() {
   const author = getAuthor();
   const featured = getFeaturedProjects(3);
   const projects = getAllProjects();
-  const techStackSet = new Set<string>();
-  for (const project of projects) {
-    for (const tech of project.techStack) {
-      techStackSet.add(tech);
-    }
-  }
-  const techCount = techStackSet.size;
+  const skillCount = author.officeSkills.length;
 
   return (
     <>
@@ -152,7 +146,7 @@ export default function HomePage() {
                   <div className="absolute bottom-0 left-[8%] right-[8%] z-40 grid grid-cols-3 gap-2 rounded-lg border border-white/80 bg-white/96 p-3 shadow-[0_14px_38px_rgba(20,41,70,0.16)] backdrop-blur">
                     {[
                       { num: projects.length, label: "Projects" },
-                      { num: techCount, label: "Skills" },
+                      { num: skillCount, label: "Skills" },
                       { label: author.graduationDate, sublabel: "Graduated" },
                     ].map(({ num, label, sublabel }) => (
                       <div key={label} className="text-center">
