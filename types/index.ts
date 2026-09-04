@@ -24,45 +24,35 @@ export interface ProjectFilterOption {
   value: string;
 }
 
-export interface LogFrontmatter {
-  slug: string;
-  week: string;
-  title: string;
-  date: string;
-  excerpt: string;
-}
-
-export interface Log extends LogFrontmatter {
-  content: MarkdownBlock[];
-}
-
 export interface Author {
   name: string;
   role: string;
   agency: string;
+  profile: string;
   degree: string;
+  university: string;
+  graduationDate: string;
+  education: EducationItem[];
+  experience: ExperienceItem[];
+  officeSkills: string[];
+  keySkills: string[];
+  languages: string[];
   location: string;
   phone: string;
   email: string;
   avatar: string;
 }
 
-export type MarkdownBlock =
-  | {
-      type: "heading";
-      level: 2 | 3;
-      text: string;
-    }
-  | {
-      type: "paragraph";
-      text: string;
-    }
-  | {
-      type: "list";
-      items: string[];
-    }
-  | {
-      type: "image";
-      src: string;
-      alt: string;
-    };
+export interface EducationItem {
+  qualification: string;
+  institution: string;
+  location: string;
+  year: string;
+}
+
+export interface ExperienceItem {
+  role: string;
+  organization: string;
+  period: string;
+  highlights: string[];
+}

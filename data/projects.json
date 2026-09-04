@@ -69,8 +69,8 @@
   },
   {
     "id": 7,
-    "title": "Internship Portfolio and Activity Log",
-    "description": "Consolidated Makerspace Innovhub internship activities into a local data-driven Next.js portfolio with filterable projects, Markdown logs, static generation, and SEO metadata.",
+    "title": "Professional Portfolio Website",
+    "description": "Built a local data-driven Next.js portfolio with filterable projects, static generation, responsive layouts, and SEO metadata.",
     "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "Markdown"],
     "completionDate": "April 2026",
     "category": "Frontend",

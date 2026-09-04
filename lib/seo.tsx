@@ -17,16 +17,20 @@ export const siteUrl = getSiteUrl();
 
 export const siteName = `${author.name} Portfolio`;
 
-export const defaultDescription = `${author.role} at ${author.agency}. Portfolio and internship activity log for frontend, SEO, Node.js, mobile development, and disaster-response platform work.`;
+export const defaultDescription = `Professional portfolio for ${author.name}, a ${author.degree} graduate from ${author.university}, featuring office and computer skills, frontend development, mobile app exposure, documentation, and applied systems projects.`;
 
 export const defaultKeywords = [
   author.name,
   "Jean Richelle Gallego",
-  "IT intern portfolio",
-  "Makerspace Innovhub",
+  "IT graduate portfolio",
+  author.university,
   "Next.js portfolio",
   "TypeScript",
   "frontend development",
+  "office support",
+  "computer skills",
+  "documentation",
+  "data entry",
   "SEO audit",
   "Node.js",
   "Pangasinan",
@@ -102,11 +106,10 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
 }
 
 export function personJsonLd() {
-  return {
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: author.name,
-    jobTitle: author.role,
     email: `mailto:${author.email}`,
     telephone: author.phone,
     address: {
@@ -117,15 +120,17 @@ export function personJsonLd() {
     },
     image: absoluteUrl(author.avatar),
     url: absoluteUrl(),
-    worksFor: {
-      "@type": "Organization",
-      name: author.agency,
-    },
     alumniOf: {
       "@type": "EducationalOrganization",
-      name: author.degree,
+      name: author.university,
     },
     knowsAbout: [
+      "Office support",
+      "Documentation",
+      "Data entry",
+      "MS Word",
+      "Excel",
+      "Google Sheets",
       "Frontend development",
       "Search engine optimization",
       "Next.js",
@@ -134,7 +139,21 @@ export function personJsonLd() {
       "Mobile development",
       "UI design",
     ],
+    knowsLanguage: author.languages,
   };
+
+  if (author.role) {
+    data.jobTitle = author.role;
+  }
+
+  if (author.agency) {
+    data.worksFor = {
+      "@type": "Organization",
+      name: author.agency,
+    };
+  }
+
+  return data;
 }
 
 export function websiteJsonLd() {

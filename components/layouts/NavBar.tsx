@@ -4,7 +4,6 @@ import Link from "next/link";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
-  { href: "/logs", label: "Logs" },
 ];
 
 export function NavBar() {

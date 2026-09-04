@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-[13px] sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:text-sm">
         <div>
           <p className="font-display text-xl text-white">&copy; {new Date().getFullYear()} Jean Richelle G. Gallego</p>
-          <p className="mt-1 text-white/60">Makerspace Innovhub internship portfolio</p>
+          <p className="mt-1 text-white/60">Information Technology</p>
         </div>
       </div>
     </footer>
