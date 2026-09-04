@@ -3,76 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
-import { Timeline } from "@/components/molecules/Timeline";
 import { getAuthor } from "@/lib/author";
 import { getAllProjects, getFeaturedProjects } from "@/lib/projects";
-import { getAllLogs } from "@/lib/logs";
 import { JsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
-
-const timelineItems = [
-  { period: "Feb 9-20", label: "Orientation, SILAG page, SEO checks" },
-  { period: "Feb 23-26", label: "Node.js practice and hackathon prep" },
-  { period: "Mar 2-13", label: "MDRRMO web prototype and mobile version" },
-  { period: "Mar 16-27", label: "Supabase, MongoDB, alerts, and tracking" },
-  { period: "Apr 6-10", label: "Final UI polish and project wrap-up" },
-];
-
-const narrativeTimelineItems = [
-  {
-    period: "Feb 9-13",
-    title: "Onboarding And First Frontend Tasks",
-    summary:
-      "Started deployment at Makerspace Innovhub, set up Next.js, explored the framework, created the SILAG marketing page, practiced GitHub, and began client page creation.",
-  },
-  {
-    period: "Feb 14-20",
-    title: "SEO Checks And Client Templates",
-    summary:
-      "Joined the GitHub and vibe-coding seminar, reviewed assigned websites for media queries, SEO metadata, map links, internal links, headings, and descriptions, then continued model and comparison page templates.",
-  },
-  {
-    period: "Feb 23-26",
-    title: "Node.js Practice And Hackathon Prep",
-    summary:
-      "Improved familiarity with the Node.js environment, completed a team assignment in the RA project, and prepared for the upcoming hackathon work.",
-  },
-  {
-    period: "Mar 2-6",
-    title: "MDRRMO Research And Web Prototype",
-    summary:
-      "Researched Disaster Response and Emergency Verification, created the MVP, hosted the prototype, prepared project presentations, added an admin dashboard, and fixed early hosting bugs.",
-  },
-  {
-    period: "Mar 9-13",
-    title: "Mobile Version And API Access",
-    summary:
-      "Polished the MDRRMO web prototype, revised client templates, created the mobile version for Hack4Mapandan, configured API access, and enabled physical phone testing.",
-  },
-  {
-    period: "Mar 16-27",
-    title: "Database, Hosting, Alerts, And Tracking",
-    summary:
-      "Fixed database and button issues, connected Supabase and MongoDB, improved web and mobile UI, hosted the web app in Vercel, added alerts, and refined tracking lookup behavior.",
-  },
-  {
-    period: "Apr 6-10",
-    title: "Project Polish And Webinar",
-    summary:
-      "Resolved reporter and dispatcher issues, fixed image and location bugs, improved mobile interfaces, added safer alert deletion, and attended an AI collaboration webinar.",
-  },
-  {
-    period: "Apr 13-17",
-    title: "DeskDine Proposal",
-    summary:
-      "Audited PromptGraph clients, identified a daily operations friction point, prepared a digital solution pitch, and had the DeskDine project accepted.",
-  },
-  {
-    period: "Apr 21-25",
-    title: "DeskDine Development",
-    summary:
-      "Developed DeskDine for admin, staff, cafe staff, and customers, fixed database write and update issues, improved UI/UX, updated order and menu management, and added deadline-based ordering logic.",
-  },
-];
 
 const toolBadges = [
   {
@@ -134,7 +67,6 @@ export default function HomePage() {
   const author = getAuthor();
   const featured = getFeaturedProjects(3);
   const projects = getAllProjects();
-  const logs = getAllLogs();
   const techStackSet = new Set<string>();
   for (const project of projects) {
     for (const tech of project.techStack) {
@@ -154,10 +86,7 @@ export default function HomePage() {
               <div>
                 <div className="mb-5 flex flex-wrap items-center gap-2">
                   <span className="rounded-full bg-forest px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-white">
-                    Internship Portfolio
-                  </span>
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-forest-light">
-                    {author.role} / {author.agency}
+                    Portfolio
                   </span>
                 </div>
 
@@ -167,7 +96,7 @@ export default function HomePage() {
                 </h1>   
 
                 <p className="mt-5 max-w-2xl text-[15px] leading-7 text-ink-2">
-                  I am a {author.degree} student passionate about web development, UI design, and problem-solving. During my internship at Makerspace InnovHub, I worked on frontend and backend interfaces, SEO checking, Node.js,and mobile dev
+                  {author.profile}
                 </p>
 
                 <div className="mt-6 grid gap-3 border-y border-paper-3 py-4 text-[13px] text-ink-2 sm:grid-cols-3">
@@ -191,12 +120,6 @@ export default function HomePage() {
                     className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md bg-forest px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-forest-light"
                   >
                     View Work
-                  </Link>
-                  <Link
-                    href="/logs"
-                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-forest/25 bg-paper px-6 py-2.5 text-[12px] font-medium uppercase tracking-[0.08em] text-forest transition-all hover:-translate-y-0.5 hover:border-forest hover:bg-white"
-                  >
-                    Read Logs
                   </Link>
                 </div>
               </div>
@@ -229,8 +152,8 @@ export default function HomePage() {
                   <div className="absolute bottom-0 left-[8%] right-[8%] z-40 grid grid-cols-3 gap-2 rounded-lg border border-white/80 bg-white/96 p-3 shadow-[0_14px_38px_rgba(20,41,70,0.16)] backdrop-blur">
                     {[
                       { num: projects.length, label: "Projects" },
-                      { num: logs.length, label: "Logs" },
-                      { label: "Web Development", sublabel: "Focus Area" },
+                      { num: techCount, label: "Skills" },
+                      { label: author.graduationDate, sublabel: "Graduated" },
                     ].map(({ num, label, sublabel }) => (
                       <div key={label} className="text-center">
                         {typeof num === "number" ? (
@@ -259,16 +182,27 @@ export default function HomePage() {
           <aside className="mt-10 rounded-lg bg-forest p-5 text-white shadow-[0_18px_60px_rgba(20,41,70,0.14)] sm:p-6">
             <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-[11px] uppercase tracking-[0.18em] text-white/80">
-                Internship Snapshot
+                Professional Snapshot
               </p>
               <Link
-                href="/logs"
+                href="/work"
                 className="inline-flex min-h-[44px] min-w-[44px] w-fit items-center rounded-md border border-white/20 px-4 text-[11px] uppercase tracking-[0.1em] text-white/95 transition-colors hover:border-gold-light hover:bg-white/10"
               >
-                Open Logs
+                Open Work
               </Link>
             </div>
-            <Timeline items={timelineItems} />
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[
+                ["Education", `${author.degree}, ${author.university}`],
+                ["Graduated", author.graduationDate],
+                ["Experience", author.experience[0]?.period ?? "2026"],
+              ].map(([title, text]) => (
+                <div key={title} className="rounded-md border border-white/15 bg-white/8 p-4">
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-gold-light">{title}</p>
+                  <p className="mt-2 text-sm leading-6 text-white/88">{text}</p>
+                </div>
+              ))}
+            </div>
           </aside>
         </div>
       </section>
@@ -276,9 +210,9 @@ export default function HomePage() {
       <section className="px-5 pb-10 [content-visibility:auto] [contain-intrinsic-size:1px_280px] sm:px-6" aria-label="Portfolio focus areas">
         <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-3">
           {[
-            ["Web Development", "Responsive pages, UI polish, accessible layouts"],
-            ["Operations", "SEO checks, reporting, deployment handoff"],
-            ["Systems", "Node.js practice, Supabase, MongoDB workflows"],
+            ["Office Support", "Documentation, record keeping, data entry, formatting, and organized digital files"],
+            ["Computer Skills", "MS Word, Excel, Google Sheets, troubleshooting, installation, and database basics"],
+            ["Technology", "Web and mobile app development exposure with AI-assisted tools and professional workflows"],
           ].map(([title, text]) => (
             <div key={title} className="rounded-lg border border-paper-3 bg-white/70 p-5 shadow-sm">
               <div>
@@ -298,7 +232,7 @@ export default function HomePage() {
             <div>
               <SectionEyebrow>Highlights</SectionEyebrow>
               <h2 className="font-display text-3xl leading-tight text-ink sm:text-4xl">
-                Featured <em className="not-italic text-gold">Activities</em>
+                Featured <em className="not-italic text-gold">Projects</em>
               </h2>
             </div>
             <Link
@@ -316,73 +250,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-paper-3 bg-paper/60 px-5 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_1600px] sm:px-6 lg:py-16" aria-label="Narrative timeline">
+      <section className="border-b border-paper-3 bg-paper/60 px-5 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_980px] sm:px-6 lg:py-16" aria-label="Professional background">
         <div className="mx-auto grid max-w-6xl gap-9 lg:grid-cols-[0.42fr_1fr] lg:items-start">
-          <div className="lg:sticky lg:top-24">
-            <SectionEyebrow>Narrative</SectionEyebrow>
+          <div>
+            <SectionEyebrow>Background</SectionEyebrow>
             <h2 className="font-display text-3xl leading-tight text-ink sm:text-4xl">
-              Internship <em className="not-italic text-gold">Timeline</em>
+              Experience And <em className="not-italic text-gold">Education</em>
             </h2>
             <p className="mt-4 text-[15px] leading-7 text-ink-2">
-              A condensed path from the narrative report, following the work from onboarding and client pages into MDRRMO systems, deployment, and DeskDine.
+              CV details organized for employers who need a quick view of training, practical experience, and workplace readiness.
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
-              <div className="border-l-2 border-gold bg-white/70 px-4 py-3">
-                <p className="font-display text-3xl leading-none text-forest">9</p>
-                <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-ink-3">Milestones</p>
-              </div>
-              <div className="border-l-2 border-forest-light bg-white/70 px-4 py-3">
-                <p className="font-display text-3xl leading-none text-forest">11</p>
-                <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-ink-3">Weeks</p>
-              </div>
-            </div>
           </div>
 
-          <ol className="relative space-y-5 before:absolute before:bottom-5 before:left-[1.15rem] before:top-5 before:w-px before:bg-gradient-to-b before:from-gold before:via-forest-light before:to-paper-3 md:before:left-1/2">
-            {narrativeTimelineItems.map((item, index) => {
-              const alignRight = index % 2 === 0;
+          <div className="grid gap-5">
+            {author.experience.map((item) => (
+              <article key={`${item.role}-${item.organization}`} className="group border border-paper-3 bg-white/86 p-5 shadow-[0_14px_34px_rgba(20,41,70,0.07)] transition-all hover:-translate-y-0.5 hover:border-forest/25 hover:bg-white">
+                <div className="mb-4 flex flex-wrap items-center gap-3">
+                  <span className="rounded-full border border-forest/15 bg-paper px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-forest">
+                    {item.period}
+                  </span>
+                  <span className="text-[12px] uppercase tracking-[0.12em] text-ink-3">{item.organization}</span>
+                </div>
+                <h3 className="font-body text-[13px] font-semibold uppercase tracking-[0.12em] text-ink">
+                  {item.role}
+                </h3>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-ink-2">
+                  {item.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
 
-              return (
-                <li key={`${item.period}-${item.title}`} className="relative md:grid md:grid-cols-[1fr_4.5rem_1fr] md:items-start md:gap-4">
-                  <div className={`${alignRight ? "md:col-start-1 md:text-right" : "md:col-start-3"} pl-12 md:pl-0`}>
-                    <article className="group border border-paper-3 bg-white/86 p-5 shadow-[0_14px_34px_rgba(20,41,70,0.07)] transition-all hover:-translate-y-0.5 hover:border-forest/25 hover:bg-white">
-                      <div className={`mb-4 flex items-center gap-3 ${alignRight ? "md:justify-end" : ""}`}>
-                        <span className="rounded-full border border-forest/15 bg-paper px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-forest">
-                          {item.period}
-                        </span>
-                        <span className="hidden h-px w-8 bg-paper-3 md:block" aria-hidden="true" />
-                      </div>
-                      <h3 className="font-body text-[13px] font-semibold uppercase tracking-[0.12em] text-ink">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-ink-2">{item.summary}</p>
-                    </article>
-                  </div>
-
-                  <div className="absolute left-0 top-4 z-10 md:static md:col-start-2 md:flex md:justify-center">
-                    <span className="flex h-9 w-9 items-center justify-center border border-forest/15 bg-paper text-[11px] font-semibold text-forest shadow-sm">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+            <div className="grid gap-5 sm:grid-cols-3">
+              {author.education.map((item) => (
+                <article key={`${item.qualification}-${item.year}`} className="group border border-paper-3 bg-white/86 p-5 shadow-[0_14px_34px_rgba(20,41,70,0.07)] transition-all hover:-translate-y-0.5 hover:border-forest/25 hover:bg-white">
+                  <p className="mb-3 w-fit rounded-full border border-forest/15 bg-paper px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-forest">
+                    {item.year}
+                  </p>
+                  <h3 className="font-body text-[13px] font-semibold uppercase tracking-[0.12em] text-ink">
+                    {item.qualification}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-ink-2">{item.institution}</p>
+                  <p className="mt-1 text-[13px] leading-6 text-ink-3">{item.location}</p>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="px-5 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_520px] sm:px-6 lg:py-14" aria-label="Portfolio summary">
+      <section className="px-5 py-12 [content-visibility:auto] [contain-intrinsic-size:1px_720px] sm:px-6 lg:py-14" aria-label="Portfolio summary">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionEyebrow>Summary</SectionEyebrow>
             <h2 className="font-display text-3xl leading-tight text-forest sm:text-4xl">
-              Built through steady internship practice.
+              Practical, organized, and ready to contribute.
             </h2>
+            <p className="mt-4 text-[15px] leading-7 text-ink-2">
+              Fluent in Filipino and English, with a responsible work style, strong attention to detail, and openness to feedback.
+            </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              ["Disaster-response UI", "Prototype work for emergency verification, alerting, and tracking flows."],
-              ["Weekly documentation", `${logs.length} logs covering orientation, practice tasks, prototypes, and DeskDine development.`],
+              ["Office And Computer Skills", author.officeSkills.join(", ")],
+              ["Key Skills", author.keySkills.join(", ")],
+              ["Languages", author.languages.join(", ")],
+              ["Project Experience", "Disaster-response UI prototypes, role-based DeskDine workflows, responsive client pages, SEO checks, and mobile app exposure."],
             ].map(([title, text]) => (
               <article key={title} className="rounded-lg border border-paper-3 bg-white p-6 shadow-sm">
                 <p className="text-[11px] uppercase tracking-[0.16em] text-gold">{title}</p>

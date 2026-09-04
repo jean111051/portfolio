@@ -1,10 +1,63 @@
 {
   "name": "Jean Richelle G. Gallego",
-  "role": "IT Intern",
-  "agency": "Makerspace Innovhub",
+  "role": "",
+  "agency": "",
+  "profile": "Recent Information Technology graduate with hands-on internship experience at a software company, where I developed websites and mobile applications and gained exposure to professional workflows, documentation, and collaboration. Strong computer proficiency, attention to detail, and a fast learning curve, with interest in administrative, office support, and technology-assisted roles.",
   "degree": "Bachelor of Science in Information Technology",
+  "university": "University of Eastern Pangasinan",
+  "graduationDate": "June 2026",
+  "education": [
+    {
+      "qualification": "Bachelor of Science in Information Technology",
+      "institution": "University of Eastern Pangasinan",
+      "location": "Binalonan, Pangasinan",
+      "year": "2026"
+    },
+    {
+      "qualification": "High School Graduate - GAS (General Academic Strand)",
+      "institution": "Lemery National High School",
+      "location": "Lemery, Iloilo",
+      "year": "2020"
+    },
+    {
+      "qualification": "Elementary Graduate",
+      "institution": "Jose Almenana Memorial Elementary School",
+      "location": "Lemery, Iloilo",
+      "year": "2016"
+    }
+  ],
+  "experience": [
+    {
+      "role": "IT Intern",
+      "organization": "Makerspace Innovhub",
+      "period": "2026 (4 Months)",
+      "highlights": [
+        "Developed websites and mobile applications using AI-assisted development tools and workflows.",
+        "Worked within a professional software company environment, gaining exposure to real project timelines, documentation practices, and team collaboration.",
+        "Adapted quickly to new tools, technologies, and processes in a fast-paced setting."
+      ]
+    }
+  ],
+  "officeSkills": [
+    "MS Word, Excel, Google Sheets, documentation, and record-keeping tools",
+    "Data entry, formatting, and organizing digital files",
+    "Basic computer hardware troubleshooting and software installation",
+    "Foundational computer concepts and basic database organization",
+    "Web and mobile app development exposure, including AI-assisted development tools"
+  ],
+  "keySkills": [
+    "Responsible",
+    "Strong attention to detail",
+    "Willing to learn and quick to adapt",
+    "Good teamwork and communication",
+    "Open to feedback and guidance"
+  ],
+  "languages": [
+    "Filipino - Native",
+    "English - Fluent"
+  ],
   "location": "Sto. Domingo, San Manuel, Pangasinan",
-  "phone": "+63 9073191173",
+  "phone": "+63 907 319 1173",
   "email": "gjeanrichelle@gmail.com",
   "avatar": "/images/profile.png"
 }

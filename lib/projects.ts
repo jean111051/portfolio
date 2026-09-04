@@ -50,5 +50,11 @@ export function getProjectFilterOptions(): ProjectFilterOption[] {
 }
 
 export function getFeaturedProjects(count = 3): Project[] {
-  return getAllProjects().slice(0, count);
+  const projects = getAllProjects();
+  const featuredIds = [1, 5, 6];
+  const featured = featuredIds
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project): project is Project => Boolean(project));
+
+  return featured.slice(0, count);
 }

@@ -7,7 +7,7 @@ import { JsonLd, absoluteUrl, buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Work",
   description:
-    "A filterable gallery of Makerspace Innovhub internship activities covering frontend development, SEO checks, research, backend integration, and mobile app work.",
+    "A filterable gallery of professional portfolio projects covering frontend development, SEO checks, research, backend integration, and mobile app work.",
   path: "/work",
 });
 
@@ -31,7 +31,7 @@ export default function WorkPage() {
           })),
         }}
       />
-      <SectionEyebrow>All Activities</SectionEyebrow>
+      <SectionEyebrow>Selected Work</SectionEyebrow>
       <h1 className="font-display text-[2.2rem] text-ink leading-snug mb-10">
         Work <em className="not-italic text-gold">Gallery</em>
       </h1>

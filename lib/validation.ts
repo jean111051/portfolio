@@ -1,4 +1,4 @@
-import type { Author, LogFrontmatter, Project, ProjectCategory } from "@/types";
+import type { Author, EducationItem, ExperienceItem, Project, ProjectCategory } from "@/types";
 
 const projectCategories: ProjectCategory[] = [
   "Frontend",
@@ -20,6 +20,14 @@ function assertString(value: unknown, field: string): string {
   return value;
 }
 
+function optionalString(value: unknown, field: string): string {
+  if (typeof value !== "string") {
+    throw new Error(`${field} must be a string.`);
+  }
+
+  return value;
+}
+
 function assertStringArray(value: unknown, field: string): string[] {
   if (
     !Array.isArray(value) ||
@@ -30,6 +38,48 @@ function assertStringArray(value: unknown, field: string): string[] {
   }
 
   return value;
+}
+
+function parseEducationItems(value: unknown, field: string): EducationItem[] {
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error(`${field} must be a non-empty array.`);
+  }
+
+  return value.map((item, index) => {
+    const prefix = `${field}[${index}]`;
+
+    if (!isRecord(item)) {
+      throw new Error(`${prefix} must be an object.`);
+    }
+
+    return {
+      qualification: assertString(item.qualification, `${prefix}.qualification`),
+      institution: assertString(item.institution, `${prefix}.institution`),
+      location: assertString(item.location, `${prefix}.location`),
+      year: assertString(item.year, `${prefix}.year`),
+    };
+  });
+}
+
+function parseExperienceItems(value: unknown, field: string): ExperienceItem[] {
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error(`${field} must be a non-empty array.`);
+  }
+
+  return value.map((item, index) => {
+    const prefix = `${field}[${index}]`;
+
+    if (!isRecord(item)) {
+      throw new Error(`${prefix} must be an object.`);
+    }
+
+    return {
+      role: assertString(item.role, `${prefix}.role`),
+      organization: assertString(item.organization, `${prefix}.organization`),
+      period: assertString(item.period, `${prefix}.period`),
+      highlights: assertStringArray(item.highlights, `${prefix}.highlights`),
+    };
+  });
 }
 
 function parseRepositoryLinks(
@@ -107,34 +157,6 @@ export function parseProjects(value: unknown): Project[] {
   });
 }
 
-export function parseLogFrontmatter(
-  value: unknown,
-  slug: string,
-): LogFrontmatter {
-  if (!isRecord(value)) {
-    throw new Error(`content/${slug}.md frontmatter must be an object.`);
-  }
-
-  const frontmatterSlug = assertString(
-    value.slug,
-    `content/${slug}.md slug`,
-  );
-
-  if (frontmatterSlug !== slug) {
-    throw new Error(
-      `content/${slug}.md slug must match the file name "${slug}".`,
-    );
-  }
-
-  return {
-    slug: frontmatterSlug,
-    week: assertString(value.week, `content/${slug}.md week`),
-    title: assertString(value.title, `content/${slug}.md title`),
-    date: assertString(value.date, `content/${slug}.md date`),
-    excerpt: assertString(value.excerpt, `content/${slug}.md excerpt`),
-  };
-}
-
 export function parseAuthor(value: unknown): Author {
   if (!isRecord(value)) {
     throw new Error("data/author.json must export an object.");
@@ -142,9 +164,17 @@ export function parseAuthor(value: unknown): Author {
 
   return {
     name: assertString(value.name, "author.name"),
-    role: assertString(value.role, "author.role"),
-    agency: assertString(value.agency, "author.agency"),
+    role: optionalString(value.role, "author.role"),
+    agency: optionalString(value.agency, "author.agency"),
+    profile: assertString(value.profile, "author.profile"),
     degree: assertString(value.degree, "author.degree"),
+    university: assertString(value.university, "author.university"),
+    graduationDate: assertString(value.graduationDate, "author.graduationDate"),
+    education: parseEducationItems(value.education, "author.education"),
+    experience: parseExperienceItems(value.experience, "author.experience"),
+    officeSkills: assertStringArray(value.officeSkills, "author.officeSkills"),
+    keySkills: assertStringArray(value.keySkills, "author.keySkills"),
+    languages: assertStringArray(value.languages, "author.languages"),
     location: assertString(value.location, "author.location"),
     phone: assertString(value.phone, "author.phone"),
     email: assertString(value.email, "author.email"),

@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { getAllLogs } from "@/lib/logs";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,20 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: absoluteUrl("/logs"),
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
   ];
 
-  const logRoutes: MetadataRoute.Sitemap = getAllLogs().map((log) => ({
-    url: absoluteUrl(`/logs/${log.slug}`),
-    lastModified,
-    changeFrequency: "yearly",
-    priority: 0.6,
-  }));
-
-  return [...staticRoutes, ...logRoutes];
+  return staticRoutes;
 }
