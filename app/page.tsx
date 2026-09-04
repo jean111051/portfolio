@@ -7,6 +7,8 @@ import { getAuthor } from "@/lib/author";
 import { getAllProjects, getFeaturedProjects } from "@/lib/projects";
 import { JsonLd, personJsonLd, websiteJsonLd } from "@/lib/seo";
 
+export const dynamic = "force-dynamic";
+
 const toolBadges = [
   {
     icon: "flutter",
@@ -187,9 +189,9 @@ export default function HomePage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               {[
-                ["Education", `${author.degree}, ${author.university}`],
-                ["Graduated", author.graduationDate],
-                ["Experience", author.experience[0]?.period ?? "2026"],
+                ["Education", author.degree],
+                ["Experience", "Developing websites since 2023"],
+                ["Strengths", "Organized, detail-oriented, and willing to learn"],
               ].map(([title, text]) => (
                 <div key={title} className="rounded-md border border-white/15 bg-white/8 p-4">
                   <p className="text-[11px] uppercase tracking-[0.12em] text-gold-light">{title}</p>
